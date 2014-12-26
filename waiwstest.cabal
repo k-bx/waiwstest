@@ -20,5 +20,22 @@ executable waiwstest
   -- other-modules:       
   -- other-extensions:    
   build-depends:       base >=4.7 && <4.8
+                     , bytestring
+                     , data-default
+                     , enclosed-exceptions
+                     , http-types
+                     , scotty
+                     , stm
+                     , slave-thread
+                     , transformers
+                     , system-uuid
+                     , text
+                     , unordered-containers
+                     , wai
+                     , wai-middleware-static
+                     , wai-websockets
+                     , warp
+                     , websockets
+                     , wreq
   -- hs-source-dirs:      
   default-language:    Haskell2010
