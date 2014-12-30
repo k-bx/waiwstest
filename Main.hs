@@ -116,11 +116,12 @@ startWebServer broadcastMessageQueue = do
                            ++ show e ++ ". Removing client.")
 
 startBroadcaster :: IO ()
-startBroadcaster = forever $ do
+startBroadcaster = do
     let wreq = W.defaults
-    threadDelay (1000000 * 6)
-    info "POST /api/broadcast/haskell"
-    W.postWith wreq "http://localhost:3333/api/broadcast/haskell" (""::ByteString)
+    forever $ do
+        threadDelay (1000000 * 6)
+        info "POST /api/broadcast/haskell"
+        W.postWith wreq "http://localhost:3333/api/broadcast/haskell" (""::ByteString)
 
 catchReportRestart :: (SomeException -> IO ()) -> IO () -> IO ()
 catchReportRestart reporter f = catchAny f reportCrashAndRestart
