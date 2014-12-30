@@ -121,7 +121,9 @@ startBroadcaster = do
     forever $ do
         threadDelay (1000000 * 6)
         info "POST /api/broadcast/haskell"
-        W.postWith wreq "http://localhost:3333/api/broadcast/haskell" (""::ByteString)
+        r <- W.postWith wreq "http://localhost:3333/api/broadcast/haskell"
+               (""::ByteString)
+        info ("Got response: " ++ show r)
 
 catchReportRestart :: (SomeException -> IO ()) -> IO () -> IO ()
 catchReportRestart reporter f = catchAny f reportCrashAndRestart
